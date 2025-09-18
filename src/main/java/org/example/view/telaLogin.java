@@ -32,15 +32,20 @@ public class telaLogin {
 
         JLabel labelImagem = new JLabel();
         try {
-            ImageIcon icon = new ImageIcon("bcb.png");
-            Image imagem = icon.getImage().getScaledInstance(1000, 550, Image.SCALE_SMOOTH);
+            // Carrega a imagem do diretório correto
+            ImageIcon icon = new ImageIcon("src/main/java/org/example/view/imagem2.jpg");
+            // Ajusta a imagem para ocupar toda a altura do painel verde (1080px)
+            Image imagem = icon.getImage().getScaledInstance(960, 1080, Image.SCALE_SMOOTH);
             labelImagem.setIcon(new ImageIcon(imagem));
-            labelImagem.setAlignmentX(Component.CENTER_ALIGNMENT);
+            labelImagem.setHorizontalAlignment(JLabel.CENTER);
+            labelImagem.setVerticalAlignment(JLabel.CENTER);
         } catch (Exception ex) {
             ex.printStackTrace();
             labelImagem.setText("Erro ao carregar imagem.");
         }
 
+        // A imagem ocupa toda a área do painel verde
+        labelImagem.setBounds(0, 0, 960, 1080);
         labelImagem.setVisible(true);
         painelFundo2.add(labelImagem);
 
@@ -62,32 +67,49 @@ public class telaLogin {
 
         LoginADM.setVisible(true);
 
+
+        JLabel labelBemVindo = new JLabel("Bem vindo ao");
+        labelBemVindo.setForeground(Color.black);
+        labelBemVindo.setFont(new Font("Arial", Font.BOLD, 60));
+        labelBemVindo.setBounds(175, 90, 800, 50);
+        painelLogin.add(labelBemVindo);
+        labelBemVindo.setVisible(true);
+
+        JLabel labelBemVindo2 = new JLabel("Better Call Bank");
+        labelBemVindo2.setForeground(new Color(0, 182, 115));
+        labelBemVindo2.setFont(new Font("Arial", Font.BOLD, 60));
+        labelBemVindo2.setBounds(175, 180, 800, 50);
+        painelLogin.add(labelBemVindo2);
+        labelBemVindo2.setVisible(true);
+
         ArredondamentoDeBotao botaoLogar = new ArredondamentoDeBotao("Fazer Login",6);
         botaoLogar.setFont(new Font("Arial", Font.BOLD, 20));
-        botaoLogar.setBounds(175, 630, 620, 70);
-        botaoLogar.setBackground(new Color(2, 128, 2));
+        botaoLogar.setForeground(Color.white);
+        botaoLogar.setBounds(175, 675, 620, 70);
+        botaoLogar.setBackground(new Color(0, 182, 115));
         botaoLogar.setBorderPainted(false);
         botaoLogar.setFocusPainted(false);
         painelLogin.add(botaoLogar);
 
-        ArredondamentoDeBotao botaoCadastrar = new ArredondamentoDeBotao("Criar uma Conta",6);
+        JButton botaoCadastrar = new JButton("Registre se");
         botaoCadastrar.setFont(new Font("Arial", Font.BOLD, 20));
-        botaoCadastrar.setBounds(175, 770, 620, 70);
-        botaoCadastrar.setBackground(new Color(2, 128, 2));
+        botaoCadastrar.setBounds(515, 815, 150, 70);
+        botaoCadastrar.setForeground(new Color(0, 128, 255));
         botaoCadastrar.setBorderPainted(false);
         botaoCadastrar.setFocusPainted(false);
+        botaoCadastrar.setContentAreaFilled(false);
         painelLogin.add(botaoCadastrar);
 
 
         JLabel labelUsuario = new JLabel("Usuário:");
         labelUsuario.setForeground(Color.black);
         labelUsuario.setFont(new Font("Arial", Font.BOLD, 20));
-        labelUsuario.setBounds(175, 300, 200, 30);
+        labelUsuario.setBounds(175, 345, 200, 30);
         painelLogin.add(labelUsuario);
         labelUsuario.setVisible(true);
 
         JTextField campoUsuario = new JTextField();
-        campoUsuario.setBounds(175, 335, 620, 50);
+        campoUsuario.setBounds(175, 380, 620, 50);
         campoUsuario.setFont(new Font("Arial", Font.BOLD, 34));
         painelLogin.add(campoUsuario);
         campoUsuario.setVisible(true);
@@ -95,16 +117,21 @@ public class telaLogin {
         JLabel labelSenha = new JLabel("Senha:");
         labelSenha.setForeground(Color.black);
         labelSenha.setFont(new Font("Arial", Font.BOLD, 20));
-        labelSenha.setBounds(175, 415, 200, 30);
+        labelSenha.setBounds(175, 460, 200, 30);
         painelLogin.add(labelSenha);
         labelSenha.setVisible(true);
 
         JPasswordField campoSenha = new JPasswordField();
-        campoSenha.setBounds(175, 465, 620, 50);
+        campoSenha.setBounds(175, 510, 620, 50);
         campoSenha.setFont(new Font("Arial", Font.BOLD, 34));
         painelLogin.add(campoSenha);
         campoSenha.setVisible(true);
 
+        JLabel labelNovo = new JLabel("Você é novo aqui?");
+        labelNovo.setBounds(350, 825, 620, 50);
+        labelNovo.setFont(new Font("Arial", Font.BOLD, 20));
+        painelLogin.add(labelNovo);
+        labelNovo.setVisible(true);
 
         botaoLogar.addActionListener(new ActionListener() {
             @Override
@@ -120,7 +147,7 @@ public class telaLogin {
         JLabel labelLembrarMe = new JLabel("Lembrar-me:");
         labelLembrarMe.setForeground(Color.black);
         labelLembrarMe.setFont(new Font("Arial", Font.BOLD, 20));
-        labelLembrarMe.setBounds(175, 540, 200, 30);
+        labelLembrarMe.setBounds(175, 585, 200, 30);
         painelLogin.add(labelLembrarMe);
         labelLembrarMe.setVisible(true);
 
