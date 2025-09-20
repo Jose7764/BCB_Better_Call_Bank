@@ -1,7 +1,7 @@
 package org.example.view;
 
 import org.example.service.ArredondamentoDeBotao;
-import org.example.view.TelaCadastro;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,20 +9,20 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
 
-public class telaLogin {
-
-    TelaCadastro telaCadastro = new TelaCadastro();
+public class TelaCadastro {
 
 
-    public void clickLoginAdm() {
-        JFrame LoginADM = new JFrame("Login do Adm");
-        LoginADM.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        LoginADM.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        LoginADM.setLayout(null);
+
+
+    public void clickCadastroAdm() {
+        JFrame CadastroADM = new JFrame("Login do Adm");
+        CadastroADM.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        CadastroADM.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        CadastroADM.setLayout(null);
 
         JPanel panelPrincipal = new JPanel(null);
         panelPrincipal.setBounds(0, 0, 1920, 1080);
-        LoginADM.add(panelPrincipal);
+        CadastroADM.add(panelPrincipal);
 
 
         JPanel painelFundo2 = new JPanel(null);
@@ -55,7 +55,7 @@ public class telaLogin {
         panelPrincipal.add(painelFundo);
 
 
-        LoginADM.setVisible(true);
+        CadastroADM.setVisible(true);
 
 
 
@@ -65,7 +65,7 @@ public class telaLogin {
         painelLogin.setBounds(0, 0, 1400, 1400);
         painelFundo.add(painelLogin);
 
-        LoginADM.setVisible(true);
+        CadastroADM.setVisible(true);
 
 
 
@@ -83,56 +83,58 @@ public class telaLogin {
         painelLogin.add(labelBemVindo2);
         labelBemVindo2.setVisible(true);
 
-        ArredondamentoDeBotao botaoLogar = new ArredondamentoDeBotao("Fazer login",6);
+        ArredondamentoDeBotao botaoLogar = new ArredondamentoDeBotao("Cadastrar",6);
         botaoLogar.setFont(new Font("Arial", Font.BOLD, 20));
         botaoLogar.setForeground(Color.white);
-        botaoLogar.setBounds(175, 675, 620, 70);
+        botaoLogar.setBounds(175, 708, 620, 70);
         botaoLogar.setBackground(new Color(0, 182, 115));
         botaoLogar.setBorderPainted(false);
         botaoLogar.setFocusPainted(false);
         painelLogin.add(botaoLogar);
 
-        botaoLogar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-
-                Home.telaHome();
-
-            }
-        });
-
-
-        JButton botaoCadastrar = new JButton("Registre-se");
+        JButton botaoCadastrar = new JButton("Fazer login");
         botaoCadastrar.setFont(new Font("Arial", Font.BOLD, 20));
-        botaoCadastrar.setBounds(515, 753, 150, 70);
+        botaoCadastrar.setBounds(547, 790, 150, 70);
         botaoCadastrar.setForeground(new Color(0, 128, 255));
         botaoCadastrar.setBorderPainted(false);
         botaoCadastrar.setFocusPainted(false);
         botaoCadastrar.setContentAreaFilled(false);
         painelLogin.add(botaoCadastrar);
 
-
         botaoCadastrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-
-                telaCadastro.clickCadastroAdm();
+            CadastroADM.dispose();
 
             }
         });
 
 
+
+
+        JLabel labelEmail = new JLabel("Email:");
+        labelEmail.setForeground(Color.black);
+        labelEmail.setFont(new Font("Arial", Font.BOLD, 20));
+        labelEmail.setBounds(175, 439, 200, 30);
+        painelLogin.add(labelEmail);
+        labelEmail.setVisible(true);
+
+        JTextField campoEmail = new JTextField();
+        campoEmail.setBounds(175, 475, 620, 50);
+        campoEmail.setFont(new Font("Arial", Font.BOLD, 25));
+        painelLogin.add(campoEmail);
+        campoEmail.setVisible(true);
+
         JLabel labelUsuario = new JLabel("Usuário:");
         labelUsuario.setForeground(Color.black);
         labelUsuario.setFont(new Font("Arial", Font.BOLD, 20));
-        labelUsuario.setBounds(175, 345, 200, 30);
+        labelUsuario.setBounds(175, 339, 200, 30);
         painelLogin.add(labelUsuario);
         labelUsuario.setVisible(true);
 
         JTextField campoUsuario = new JTextField();
-        campoUsuario.setBounds(175, 380, 620, 50);
+        campoUsuario.setBounds(175, 375, 620, 50);
         campoUsuario.setFont(new Font("Arial", Font.BOLD, 20));
         painelLogin.add(campoUsuario);
         campoUsuario.setVisible(true);
@@ -140,12 +142,13 @@ public class telaLogin {
         JLabel labelSenha = new JLabel("Senha:");
         labelSenha.setForeground(Color.black);
         labelSenha.setFont(new Font("Arial", Font.BOLD, 20));
-        labelSenha.setBounds(175, 477, 200, 30);
+        labelSenha.setBounds(175, 539, 200, 30);
         painelLogin.add(labelSenha);
         labelSenha.setVisible(true);
 
+
         JPasswordField campoSenha = new JPasswordField();
-        campoSenha.setBounds(175, 510, 560, 50);
+        campoSenha.setBounds(175, 575, 560, 50);
         campoSenha.setFont(new Font("Arial", Font.BOLD, 20));
         painelLogin.add(campoSenha);
         campoSenha.setVisible(true);
@@ -153,7 +156,7 @@ public class telaLogin {
         ArredondamentoDeBotao botaoOlho = new ArredondamentoDeBotao("👁️",6);
         botaoOlho.setFont(new Font("SansSerif", Font.PLAIN, 16));
         botaoOlho.setFocusable(false);
-        botaoOlho.setBounds(740, 510, 50, 50);
+        botaoOlho.setBounds(740, 575, 50, 50);
 
         botaoOlho.addActionListener(new ActionListener() {
             private boolean mostrando = false;
@@ -173,8 +176,8 @@ public class telaLogin {
         painelLogin.add(botaoOlho);
 
 
-        JLabel labelNovo = new JLabel("Você é novo aqui?");
-        labelNovo.setBounds(350, 763, 620, 50);
+        JLabel labelNovo = new JLabel("Você já possui uma conta?");
+        labelNovo.setBounds(300, 800, 620, 50);
         labelNovo.setFont(new Font("Arial", Font.BOLD, 20));
         painelLogin.add(labelNovo);
         labelNovo.setVisible(true);
@@ -192,11 +195,8 @@ public class telaLogin {
 
 
 
-
-
-
-        LoginADM.setVisible(true);
-        LoginADM.repaint();
+        CadastroADM.setVisible(true);
+        CadastroADM.repaint();
     }
 
     private boolean authenticateUserAndRegisterLogin(String email, String senha) {
