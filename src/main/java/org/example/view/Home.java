@@ -18,32 +18,31 @@ public class Home {
         panelPrincipal.setBounds(0, 0, 1920, 1080);
         home.add(panelPrincipal);
 
-        // Painel principal de login
+
         JPanel painelLogin = new JPanel(null);
-        painelLogin.setBackground(new Color(251, 251, 251));
+        painelLogin.setBackground(new Color(0, 82, 255));
         painelLogin.setBounds(0, 0, 1920, 1080);
         panelPrincipal.add(painelLogin);
 
-        // Painel esquerdo vermelho
+
         JPanel painelEsquerdo = new JPanel(null);
         painelEsquerdo.setBackground(new Color(255, 255, 255));
         painelEsquerdo.setBounds(0, 0, 350, 1080);
         painelLogin.add(painelEsquerdo);
 
-        // Label com imagem no painel esquerdo
-        // Label com imagem no painel
+
         JLabel labelImagem = new JLabel();
         try {
-            // Carrega a imagem
+
             ImageIcon icon = new ImageIcon("src/main/java/org/example/view/baixados.png");
 
-            // Ajusta a imagem para caber no painel esquerdo
+
             Image imagem = icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
 
             labelImagem.setIcon(new ImageIcon(imagem));
 
 
-            // Ocupa todo painelEsquerdo sem cortar
+
             labelImagem.setBounds(5, -50, 350, 200);
 
             painelEsquerdo.add(labelImagem);
@@ -54,17 +53,46 @@ public class Home {
             painelEsquerdo.add(labelImagem);
         }
 
+        String[] opcoes = {"PIX", "Fatura", "Cartões", "Crédito", "Empréstimos", "Configurações" , "Perfil"};
+        for (int i = 0; i < opcoes.length; i++) {
+            JButton btn = new JButton(opcoes[i]);
+            btn.setForeground(new Color(255,255,255));
+            btn.setBackground(new Color(98, 179, 138));
+            btn.setBounds(40, 120 + (i * 80), 260, 60);
+            painelEsquerdo.add(btn);
+        }
 
-        // Exibe a tela
         home.setVisible(true);
         home.repaint();
 
 
         JPanel painelDireito = new JPanel(null);
         painelDireito.setBackground(new Color(255, 255, 255));
-        painelDireito.setBounds(1550, 0, 450, 1080);
+        painelDireito.setBounds(1450, 0, 550, 1080);
         painelLogin.add(painelDireito);
 
+        JLabel lblCartoes = new JLabel("Cartões", SwingConstants.CENTER);
+        lblCartoes.setForeground(new Color(0, 0, 0));
+        lblCartoes.setBounds(120, 10, 250, 30);
+        lblCartoes.setFont(new Font("Arial", Font.BOLD, 16));
+
+        JPanel areaCartoes = new JPanel();
+        areaCartoes.setBackground(new Color(98, 179, 138));
+        areaCartoes.setBounds(70, 50, 350, 210);
+
+        JLabel lblHistorico = new JLabel("Histórico de Transferências", SwingConstants.CENTER);
+        lblHistorico.setBounds(110, 520, 250, 30);
+        lblHistorico.setForeground(new Color(0, 0, 0));
+        lblHistorico.setFont(new Font("Arial", Font.BOLD, 14));
+
+        JTextArea areaHistorico = new JTextArea();
+        areaHistorico.setBackground(new Color(98, 179, 138));
+        areaHistorico.setBounds(70, 560, 350, 370);
+
+        painelDireito.add(lblCartoes);
+        painelDireito.add(areaCartoes);
+        painelDireito.add(lblHistorico);
+        painelDireito.add(areaHistorico);
 
         JLabel labelImagemDireita = new JLabel();
         try {
@@ -83,9 +111,35 @@ public class Home {
         }
 
 
-        // Exibe a tela
+
         home.setVisible(true);
         home.repaint();
+
+
+        JPanel painelCentral = new JPanel();
+        painelCentral.setLayout(null);
+        painelCentral.setBackground(new Color(21, 122, 80, 255));
+        painelCentral.setBounds(200, 0, 1300, 1100);
+
+        JLabel lblSaldo = new JLabel("R$ 12.345,67", SwingConstants.CENTER);
+        lblSaldo.setForeground(new Color(255,255,255));
+        lblSaldo.setFont(new Font("Arial", Font.BOLD, 26));
+        lblSaldo.setBounds(200, 100, 350, 50);
+
+        JButton btnDepositar = new JButton("Depositar");
+        btnDepositar.setBounds(300, 800, 100, 40);
+
+        JButton btnSacar = new JButton("Sacar");
+        btnSacar.setBounds(900, 800, 100, 40);
+
+
+        painelCentral.add(lblSaldo);
+        painelCentral.add(btnDepositar);
+        painelCentral.add(btnSacar);
+
+
+        painelLogin.add(painelCentral);
+
 
 
         JLabel labelUsuario = new JLabel("BETTER CALL BANK");
@@ -95,17 +149,11 @@ public class Home {
         painelEsquerdo.add(labelUsuario);
         painelLogin.setVisible(true);
 
-        JLabel labelMenu = new JLabel("Menu");
-        labelMenu.setForeground(Color.black);
-        labelMenu.setFont(new Font("Arial", Font.BOLD, 20));
-        labelMenu.setBounds(55, 240, 200, 30);
-        painelEsquerdo.add(labelMenu);
-        painelLogin.setVisible(true);
 
         JButton botaoHome = new JButton("🏠 Home");
         botaoHome.setFont(new Font("Arial", Font.BOLD, 20));
         botaoHome.setBounds(547, 790, 150, 70);
-        botaoHome.setForeground(new Color(0, 128, 255));
+        botaoHome.setForeground(new Color(37,255, 164));
         botaoHome.setBorderPainted(false);
         botaoHome.setFocusPainted(false);
         botaoHome.setContentAreaFilled(false);

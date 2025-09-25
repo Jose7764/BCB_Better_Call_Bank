@@ -15,7 +15,7 @@ public class telaLogin {
 
 
     public void clickLoginAdm() {
-        JFrame LoginADM = new JFrame("Login do Adm");
+        JFrame LoginADM = new JFrame("Login");
         LoginADM.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         LoginADM.setExtendedState(JFrame.MAXIMIZED_BOTH);
         LoginADM.setLayout(null);
@@ -95,8 +95,6 @@ public class telaLogin {
         botaoLogar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-
                 Home.telaHome();
 
             }
@@ -197,43 +195,6 @@ public class telaLogin {
 
         LoginADM.setVisible(true);
         LoginADM.repaint();
-    }
-
-    private boolean authenticateUserAndRegisterLogin(String email, String senha) {
-        boolean authenticated = false;
-
-        try (Connection conn = getConnection()) {
-            String sql = "SELECT id FROM usuarios WHERE email = ? AND senha = ?";
-            try (PreparedStatement ps = conn.prepareStatement(sql)) {
-                ps.setString(1, email);
-                ps.setString(2, senha);
-
-                try (ResultSet rs = ps.executeQuery()) {
-                    if (rs.next()) {
-                        authenticated = true;
-                        int usuarioId = rs.getInt("id");
-
-                        // 2. Inserir registro de login na tabela logins
-                        String insertSql = "INSERT INTO logins (usuario_id) VALUES (?)";
-                        try (PreparedStatement psInsert = conn.prepareStatement(insertSql)) {
-                            psInsert.setInt(1, usuarioId);
-                            psInsert.executeUpdate();
-                        }
-                    }
-                }
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao autenticar: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
-        }
-        return authenticated;
-    }
-
-    private Connection getConnection() throws SQLException {
-        String url = "jdbc:mysql://maglev.proxy.rlwy.net:21239/railway";
-        String user = "root";
-        String password = "rapOEQXmJZLYFiltlqGiDkyUWGUVTQMJ";
-
-        return DriverManager.getConnection(url, user, password);
     }
 
 
